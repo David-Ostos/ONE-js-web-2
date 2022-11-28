@@ -37,7 +37,24 @@ const mensajesDeError = { // se abre el arreglo para agregar los emnsajes de err
     },
     nacimiento: {
         valueMissing:"Este campo no puede estar vacio",
-        customError: "Debes tener por lo menos 18 años" }// se verifica que el setCustomValidity sea correcto de lo contrario muestra el mensaje.
+        customError: "Debes tener por lo menos 18 años"// se verifica que el setCustomValidity sea correcto de lo contrario muestra el mensaje.
+    },
+    numero: {
+        valueMissing:"Este campo no puede estar vacio",
+        patternMismatch:"el formato requerido es xxxxxxxxxx 10 numeros"
+    },
+    direccion:{
+        valueMissing:"Este campo no puede estar vacio",
+        patternMismatch: "La direccion debe contener entre 10 a 40 caracteres"
+    },
+    ciudad:{
+        valueMissing:"Este campo no puede estar vacio",
+        patternMismatch: "La ciudad debe contener entre 10 a 40 caracteres"
+    },
+    estado:{
+        valueMissing:"Este campo no puede estar vacio",
+        patternMismatch: "El estado debe contener entre 10 a 40 caracteres"
+    }
 }
 
 const validadores = {
@@ -48,10 +65,10 @@ const validadores = {
 function mostrarMensajeDeError(tipoDeInput, input){ //con la funcion tipo de input se busca el data-type del elemento, y el input para saber su contenido
     let mensaje = "";// se pone el mensaje en blanco
     tipoDeError.forEach( error => { //aqui utilizamos este atributo para poder buscar en tipoDeError, y ver si el hay un error ys i lo hay agrega el mensaje que corrsponda
-        if (input.validity[error]){/* aqui se agrega la condicional para crear el validador 
+        if (input.validity[error]){// aqui se agrega la condicional para crear el validador 
             console.log(tipoDeInput,error);
             console.log(input.validity[error]);
-            console.log(mensajesDeError[tipoDeInput][error]);*/
+            console.log(mensajesDeError[tipoDeInput][error]);
             mensaje = mensajesDeError[tipoDeInput][error]; //se utiliza la funcion mensajeDeError, para poder obtener los mensajes dependiendo del que sea requerido
         }
     })
